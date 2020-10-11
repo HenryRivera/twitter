@@ -17,7 +17,6 @@ class HomeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTweets()
         
         // target: Where do I want this to happen
         // Selector: What do you want us to do?
@@ -25,12 +24,19 @@ class HomeTableViewController: UITableViewController {
         
         // telling table which refresh control to use
         tableView.refreshControl = tweetRefreshControl
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 150
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadTweets()
     }
     
     
@@ -99,6 +105,12 @@ class HomeTableViewController: UITableViewController {
         
         cell.usernameLabel.text = (user["name"] as! String)
         cell.tweetLabel.text = (tweetArray[indexPath.row]["text"] as! String)
+        
+        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
+        
+        cell.setRetweeted(tweetArray[indexPath.row]["retweeted"] as! Bool)
+        
         return cell
     }
     
