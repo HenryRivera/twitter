@@ -182,13 +182,25 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGM-hB-EWW">
+                                <rect key="frame" x="366" y="192" width="40" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="qFT-Ah-i3P"/>
+                                    <constraint firstAttribute="height" constant="20" id="vRa-sE-dtE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="snm-m2-4Qk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="o2v-8A-pqJ" firstAttribute="top" secondItem="snm-m2-4Qk" secondAttribute="top" id="8eg-zm-zST"/>
+                            <constraint firstItem="vGM-hB-EWW" firstAttribute="top" secondItem="o2v-8A-pqJ" secondAttribute="bottom" constant="8" id="NjW-eC-MsI"/>
                             <constraint firstItem="o2v-8A-pqJ" firstAttribute="leading" secondItem="snm-m2-4Qk" secondAttribute="leading" id="SV0-2q-8KX"/>
                             <constraint firstItem="snm-m2-4Qk" firstAttribute="trailing" secondItem="o2v-8A-pqJ" secondAttribute="trailing" id="Yfh-EL-Fdp"/>
+                            <constraint firstItem="snm-m2-4Qk" firstAttribute="trailing" secondItem="vGM-hB-EWW" secondAttribute="trailing" constant="8" id="amB-Kb-j9f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aOw-9F-CbL">
@@ -206,6 +218,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="characterCountLabel" destination="vGM-hB-EWW" id="OTV-pd-11L"/>
                         <outlet property="tweetTextView" destination="o2v-8A-pqJ" id="SWX-34-ep8"/>
                     </connections>
                 </viewController>

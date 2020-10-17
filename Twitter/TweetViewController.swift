@@ -8,8 +8,10 @@
 
 import UIKit
 
-class TweetViewController: UIViewController {
-
+class TweetViewController: UIViewController, UITextViewDelegate {
+    
+    
+    @IBOutlet weak var characterCountLabel: UILabel!
     @IBOutlet weak var tweetTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +20,28 @@ class TweetViewController: UIViewController {
         
         // display keyboard
         tweetTextView.becomeFirstResponder()
+        
+        tweetTextView.delegate = self
     }
+    
+    func updateCharacterCount() {
+        let tweetCount = self.tweetTextView.text.count
+        self.characterCountLabel.text = "\(280 - tweetCount)"
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.updateCharacterCount()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+        if(textView == tweetTextView){
+           return textView.text.count +  (text.count - range.length) <= 280
+        }
+        return false
+        
+    }
+    
+    
     
 
     @IBAction func cancelTweet(_ sender: Any) {
